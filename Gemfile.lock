@@ -91,8 +91,11 @@ GEM
     debug (1.9.2)
       irb (~> 1.10)
       reline (>= 0.3.8)
+    diff-lcs (1.5.1)
     drb (2.2.1)
     erubi (1.13.0)
+    faker (3.4.2)
+      i18n (>= 1.8.11, < 2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.6)
@@ -181,9 +184,34 @@ GEM
     rake (13.2.1)
     rdoc (6.8.1)
       psych (>= 4.0.0)
+    redis-client (0.22.2)
+      connection_pool
     reline (0.5.11)
       io-console (~> 0.5)
+    rspec-core (3.13.1)
+      rspec-support (~> 3.13.0)
+    rspec-expectations (3.13.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-mocks (3.13.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-rails (6.1.5)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.13)
+      rspec-expectations (~> 3.13)
+      rspec-mocks (~> 3.13)
+      rspec-support (~> 3.13)
+    rspec-support (3.13.1)
     securerandom (0.3.2)
+    sidekiq (7.3.2)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      logger
+      rack (>= 2.2.4)
+      redis-client (>= 0.22.2)
     sqlite3 (2.3.0-aarch64-linux-gnu)
     sqlite3 (2.3.0-aarch64-linux-musl)
     sqlite3 (2.3.0-arm-linux-gnu)
@@ -223,8 +251,11 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   debug
+  faker
   puma (>= 5.0)
   rails (~> 7.1.5)
+  rspec-rails
+  sidekiq
   sqlite3 (>= 1.4)
   tzinfo-data
 
