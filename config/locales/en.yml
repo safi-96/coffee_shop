@@ -6,6 +6,8 @@ en:
       success: The record has been updated successfully!
     fetched:
       success: The record has been fetched successfully!
+    route:
+      not_found: Route not found
   model:
     errors:
       not_found: Not Found

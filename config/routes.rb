@@ -5,4 +5,8 @@ Rails.application.routes.draw do
       resources :items, only: [:index]
     end
   end
+
+  match '*unmatched', to: 'application#route_not_found', via: :all, constraints: lambda { |req|
+    req.path.exclude? '/rails/active_storage'
+  }
 end

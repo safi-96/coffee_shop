@@ -1,12 +1,29 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class OrdersController < ApplicationController
       before_action :set_order, only: [:show, :update]
 
+      # curl --location 'localhost:3000/api/v1/orders?page=1&per_page=5'
       def index
         @orders = paginate(Order.all)
       end
 
+      # curl --location 'localhost:3000/api/v1/orders' \
+      # --header 'Content-Type: application/json' \
+      # --data-raw '{
+      #     "order": {
+      #         "customer_name": "Name",
+      #         "customer_email": "abc@example.com",
+      #         "items": [
+      #             {
+      #                 "id": 1,
+      #                 "quantity": 1
+      #             }
+      #         ]
+      #     }
+      # }'
       def create
         order = Order.new(
           customer_name: order_params[:customer_name],
@@ -18,9 +35,11 @@ module Api
         order.save!
       end
 
+      # curl --location 'localhost:3000/api/v1/orders/1'
       def show
       end
 
+      # curl --location --request PATCH 'localhost:3000/api/v1/orders/1'
       def update
         # As per the requirements we do not have to handle the payments etc,
         # If we had, we could have managed them here with the actual amount paid.

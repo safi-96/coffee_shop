@@ -41,19 +41,7 @@ To Dos:
 - Unit Test with Rspecs
 - Docker and Docker Compose
 - Update Readme with instructions to run the application, and should be easy to go
-- Move strings and numbers to constants
-- Move success/failure responses to en.yml
-- ransack for filters
-- Add request payload in the controller actions samples
-- Add bullet gem to detect N+1 queries
-- Add pagination
-- Jbuilder
-- Add no route found message for wrong routes
-- add frozen_string_literal: true in each ruby file
-- add built in status codes
-- Add comments in models, controller and other ruby files
-- For notifications I am gonna use Email
-- Discount will only get applied on price but tax will always be applied on the item
+- Set mailer
 
 ### Endpoints
 
