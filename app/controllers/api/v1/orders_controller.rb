@@ -43,9 +43,10 @@ module Api
       def update
         # As per the requirements we do not have to handle the payments etc,
         # If we had, we could have managed them here with the actual amount paid.
+        # We can set the time to 5 seconds or more as we go
 
         @order.paid!
-        OrderNotificationJob.set(wait: 5.minutes).perform_later(@order.id)
+        OrderNotificationJob.set(wait: 5.seconds).perform_later(@order.id)
       end
 
       private

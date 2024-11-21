@@ -11,3 +11,5 @@ en:
   model:
     errors:
       not_found: Not Found
+  mailer:
+    ready_order: "Your order %{order_id} is ready!"

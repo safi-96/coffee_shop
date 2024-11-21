@@ -31,17 +31,18 @@ Users should be able to see the list of available items, User should be able to 
 
 Unit test cases are not mandatory but will be considered if tendered.  
 Tech Stack - Current stable Ruby and Ruby on Rails with SQLITE as the database. The default Rails front-end is acceptable or, if you prefer, you can also show us your front-end skills in some JS technologies (React/Angular, etc) or Bootstrap, or plain Html/JS but the whole must be executable as part of a single stack.
+
 Delivery: You may deliver on a public Github repo (preferred) or via a tar.gz or zip ball (you will lose points). Your delivery must include instructions on how to successfully run your solution locally. Docker and Docker Compose are preferred, easy start up and testing of your solution will be considered positive. Be sure your solution is complete. Make sure your README contains all necessary information. It is possible to fail if we have difficulty verifying your solution, so please make sure that it is easy to run and verify.
+
 We will begin with an approximately 30-minute live coding session that demonstrates how you will begin solving this problem. This should be thought of as a code pairing session where you share your thoughts as you work, and the interviewer may ask questions or make suggestions.
 The timeline for the submission of your full solution is within 48 hours of the completion of the L1 Technical Interview.
 
 To Dos:
 
-- Postman collection and API documentation and add new request for the doc of each endpoint
 - Unit Test with Rspecs
 - Docker and Docker Compose
+- Postman collection and API documentation and add new request for the doc of each endpoint
 - Update Readme with instructions to run the application, and should be easy to go
-- Set mailer
 
 ### Endpoints
 

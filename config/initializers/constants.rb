@@ -25,3 +25,8 @@ PER_PAGE_RECORDS = 10
 # My Assumptions on Discount Rules
 # 1. Buy 2 of the same item, get a 10% discount on the third one.
 # 2. Buy 3 of the same item, get the last one for free.
+
+# ----------------
+# Mailer
+# ----------------
+FROM_MAILER = 'test_assessment@example.com'
