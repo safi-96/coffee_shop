@@ -1,4 +1,11 @@
 en:
+  controllers:
+    created:
+      success: The record has been created successfully!
+    updated:
+      success: The record has been updated successfully!
+    fetched:
+      success: The record has been fetched successfully!
   model:
     errors:
-      not_found: "Not Found"
+      not_found: Not Found
