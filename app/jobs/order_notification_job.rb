@@ -2,6 +2,8 @@ class OrderNotificationJob < ApplicationJob
   queue_as :default
 
   def perform(order_id)
-    Order.find(order_id)&.ready!
+    order = Order.find(order_id)
+    order.ready!
+    OrderMailer.order_ready(order).deliver_later
   end
 end

@@ -2,49 +2,52 @@ module Api
   module V1
     class OrdersController < ApplicationController
       def index
-        @orders = paginate(Order.ready)
+        @orders = paginate(Order.all)
       end
 
       def create
-        order = Order.new(customer_name: order_params[:customer_name])
-        total_price = 0
-
-        order_params[:items].each do |item_param|
-          item = Item.find(item_param[:item_id])
-          quantity = item_param[:quantity]
-
-          price = (item.price * quantity) * (1 + item.tax_rate.to_f)
-          total_price += price * (1 - (item.discount_percentage.to_f / 100.0))
-
-          order.order_items.build(
-            item: item,
-            quantity: quantity,
-            price: price,
-            discount_applied: discount
-          )
-        end
-
+        order = Order.new(customer_name: order_params[:customer_name],
+                          customer_email: order_params[:customer_email]
+                        )
+        order, total_price = build_order_items(order)
         order.total_price = total_price
-        order.status = 'pending'
-
-        if order.save
-          # Notify after a delay (simulation)
-          OrderNotificationJob.set(wait: 5.minutes).perform_later(order.id)
-          render json: { order_id: order.id, status: order.status, total_price: total_price }, status: :created
-        else
-          render json: { error: order.errors.full_messages }, status: :unprocessable_entity
-        end
+        order.status = ORDER_STATUSES[:initiated]
+        order.save!
       end
 
       def show
-        order = Order.includes(:order_items).find(params[:id])
-        render json: order.as_json(include: :order_items)
+      end
+
+      def update
+        @order.paid!
+        OrderNotificationJob.set(wait: 5.minutes).perform_later(@order.id)
       end
 
       private
 
+      def set_order
+        @order = Order.find(params[:id])
+      end
       def order_params
-        params.require(:order).permit(:customer_name, items: [:item_id, :quantity])
+        params.require(:order).permit(:customer_name, :customer_email, items: [:item_id, :quantity])
+      end
+
+      def build_order_items(order)
+        total_price = 0
+        order_params[:items].each do |item_param|
+          item = Item.find(item_param[:item_id])
+          quantity = item_param[:quantity]
+          price = (item.price * quantity) * (1 + item.tax_rate.to_f)
+          total_price += price * (1 - (item.discount_percentage.to_f / 100.0))
+
+          order.order_items.build(
+            item_id: item.id,
+            quantity: quantity,
+            price: price
+          )
+        end
+
+        order, total_price
       end
     end
   end

@@ -4,7 +4,7 @@
 # ORDER
 # ----------------
 STANDARD_WAIT_TIME = 5
-ORDER_STATUSES = { initiated: 0, ready: 2 }.freeze
+ORDER_STATUSES = { initiated: 0, paid: 1, ready: 2 }.freeze
 
 # ----------------
 # ITEM
