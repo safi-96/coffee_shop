@@ -2,8 +2,7 @@ module Api
   module V1
     class ItemsController < ApplicationController
       def index
-        items = Item.all
-        render json: items
+        @items = paginate(Item.all)
       end
     end
   end

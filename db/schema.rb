@@ -36,7 +36,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_20_182402) do
   create_table "orders", force: :cascade do |t|
     t.string "customer_name"
     t.decimal "total_price"
-    t.string "status"
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

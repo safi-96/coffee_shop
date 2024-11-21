@@ -12,7 +12,7 @@ gem "sqlite3", ">= 1.4"
 gem "puma", ">= 5.0"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-# gem "jbuilder"
+gem 'jbuilder', '~> 2.13.0'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
@@ -40,6 +40,9 @@ gem 'sidekiq'
 
 # Faker for seeding
 gem 'faker'
+
+# pagy for pagination responses
+gem 'pagy', '~> 6.5.0'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
