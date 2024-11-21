@@ -4,7 +4,7 @@ class CreateItems < ActiveRecord::Migration[7.1]
       t.string :name
       t.decimal :price
       t.decimal :tax_rate
-      t.string :category
+      t.integer :category, default: 0, null: false # Enum
       t.decimal :discount
 
       t.timestamps

@@ -1,3 +1,5 @@
 class Item < ApplicationRecord
-  validates :name, :price, :tax_rate, presence: true
+  enum category: ::ITEM_CATEGORIES
+
+  validates :name, :price, :tax_rate, :category, presence: true
 end
