@@ -49,6 +49,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem 'rspec-rails'
   gem 'byebug', '~> 11.1.3'
+  gem 'bullet', '~> 8.0.0'
 end
 
 group :development do

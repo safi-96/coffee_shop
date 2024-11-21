@@ -41,20 +41,33 @@ module Api
 
       def build_order_items(order)
         total_price = 0
+
+        # Fetch all items in a single query
+        item_ids = order_params[:items].map { |item_param| item_param[:id] }
+        items = Item.where(id: item_ids).index_by(&:id)
+
         order_params[:items].each do |item_param|
-          item = Item.find(item_param[:id])
+          item = items[item_param[:id]]
           quantity = item_param[:quantity]
-          price = (item.price * quantity) * (1 + item.tax_rate.to_f)
-          total_price += price
+          base_price = item.price * (1 + item.tax_rate.to_f)
+
+          # Rule 1: Buy 2, get 10% off the third
+          rule_1_discount = (quantity / 3) * base_price * 0.1
+
+          # Rule 2: Buy 3, get 1 free
+          rule_2_discount = (quantity / 4) * base_price
+          total_discount = rule_1_discount + rule_2_discount
+          item_total_price = (base_price * quantity) - total_discount
+          total_price += item_total_price
 
           order.order_items.build(
             item_id: item.id,
             quantity: quantity,
-            price: price
+            price: item_total_price
           )
         end
 
-        [ order, total_price ]
+        [order, total_price]
       end
     end
   end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ExceptionHandler
+module Exceptionable
   extend ActiveSupport::Concern
 
   # Custom error classes

@@ -2,7 +2,7 @@
 
 require 'pagy/extras/overflow'
 
-module Paginator
+module Paginatable
   extend ActiveSupport::Concern
 
   include Pagy::Backend

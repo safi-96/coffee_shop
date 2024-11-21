@@ -1,2 +1,7 @@
-<h1>Order is ready</h1>
-<p>Your order <%=@order.id%> is ready, please collect from the counter </p>
+<h1>Your Order is Ready!</h1>
+
+<p>Dear <%= @order.customer_name %>,</p>
+
+<p>Your order <%= @order.id %> is ready. Please collect it from the counter at your earliest convenience.</p>
+
+<p>Thank you for choosing us!</p>
