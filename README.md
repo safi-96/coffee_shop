@@ -37,15 +37,12 @@ The timeline for the submission of your full solution is within 48 hours of the 
 
 To Dos:
 
-- DB architecture
-- Backend model and association
 - Postman collection and API documentation and add new request for the doc of each endpoint
 - Unit Test with Rspecs
 - Docker and Docker Compose
 - Update Readme with instructions to run the application, and should be easy to go
 - Move strings and numbers to constants
 - Move success/failure responses to en.yml
-- Add exception handler
 - ransack for filters
 - Add request payload in the controller actions samples
 - Add bullet gem to detect N+1 queries

@@ -1,14 +1,17 @@
 module Api
   module V1
     class OrdersController < ApplicationController
+      before_action :set_order, only: [:show, :update]
+
       def index
         @orders = paginate(Order.all)
       end
 
       def create
-        order = Order.new(customer_name: order_params[:customer_name],
-                          customer_email: order_params[:customer_email]
-                        )
+        order = Order.new(
+          customer_name: order_params[:customer_name],
+          customer_email: order_params[:customer_email]
+        )
         order, total_price = build_order_items(order)
         order.total_price = total_price
         order.status = ORDER_STATUSES[:initiated]
@@ -28,17 +31,18 @@ module Api
       def set_order
         @order = Order.find(params[:id])
       end
+
       def order_params
-        params.require(:order).permit(:customer_name, :customer_email, items: [:item_id, :quantity])
+        params.require(:order).permit(:customer_name, :customer_email, items: [:id, :quantity])
       end
 
       def build_order_items(order)
         total_price = 0
         order_params[:items].each do |item_param|
-          item = Item.find(item_param[:item_id])
+          item = Item.find(item_param[:id])
           quantity = item_param[:quantity]
           price = (item.price * quantity) * (1 + item.tax_rate.to_f)
-          total_price += price * (1 - (item.discount_percentage.to_f / 100.0))
+          total_price += price
 
           order.order_items.build(
             item_id: item.id,
@@ -47,7 +51,7 @@ module Api
           )
         end
 
-        order, total_price
+        [ order, total_price ]
       end
     end
   end
