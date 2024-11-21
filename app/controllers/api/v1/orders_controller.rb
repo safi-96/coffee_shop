@@ -22,6 +22,9 @@ module Api
       end
 
       def update
+        # As per the requirements we do not have to handle the payments etc,
+        # If we had, we could have managed them here with the actual amount paid.
+
         @order.paid!
         OrderNotificationJob.set(wait: 5.minutes).perform_later(@order.id)
       end
