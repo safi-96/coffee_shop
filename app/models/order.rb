@@ -9,7 +9,7 @@ class Order < ApplicationRecord
   # ----------------
   # ENUMS
   # ----------------
-  enum :status, ::ORDER_STATUSES
+  enum status: ::ORDER_STATUSES
 
   # ----------------
   # VALIDATIONS

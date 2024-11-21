@@ -4,8 +4,7 @@
     name: Faker::Coffee.blend_name,
     price: rand(3.0..7.0).round(2),
     tax_rate: rand(0.05..0.15).round(2),
-    category: ::ITEM_CATEGORIES.values.sample,
-    discount: ::ITEM_DISCOUNT_RATES.sample
+    category: ::ITEM_CATEGORIES.values.sample
   )
 end
 

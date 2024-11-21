@@ -16,7 +16,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_20_182402) do
     t.decimal "price"
     t.decimal "tax_rate"
     t.integer "category", default: 0, null: false
-    t.decimal "discount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

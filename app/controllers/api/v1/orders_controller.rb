@@ -1,6 +1,10 @@
 module Api
   module V1
     class OrdersController < ApplicationController
+      def index
+        @orders = paginate(Order.ready)
+      end
+
       def create
         order = Order.new(customer_name: order_params[:customer_name])
         total_price = 0
@@ -9,9 +13,8 @@ module Api
           item = Item.find(item_param[:item_id])
           quantity = item_param[:quantity]
 
-          price = (item.price * quantity) * (1 + item.tax_rate)
-          discount = item.discount || 0
-          total_price += price - discount
+          price = (item.price * quantity) * (1 + item.tax_rate.to_f)
+          total_price += price * (1 - (item.discount_percentage.to_f / 100.0))
 
           order.order_items.build(
             item: item,

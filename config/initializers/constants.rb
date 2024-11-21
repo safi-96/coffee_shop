@@ -4,12 +4,11 @@
 # ORDER
 # ----------------
 STANDARD_WAIT_TIME = 5
-ORDER_STATUSES = { initiated: 0, in_progress: 1, ready: 2, completed: 2 }.freeze
+ORDER_STATUSES = { initiated: 0, ready: 2 }.freeze
 
 # ----------------
 # ITEM
 # ----------------
-ITEM_DISCOUNT_RATES = [0, 0.5, 1.0]
 ITEM_CATEGORIES = { beverage: 0, food: 1, merchandise: 2 }.freeze
 
 # ----------------
@@ -22,3 +21,7 @@ RESPONSE_STATUS_CODES = Rack::Utils::SYMBOL_TO_STATUS_CODE
 # ----------------
 DEFAULT_PAGE = 1
 PER_PAGE_RECORDS = 10
+
+# Discount Rules
+# 1. Buy 2 food item and get 1 bevarage at 50%
+# 2. Buy 2 bevarages get 1 merchandise free
