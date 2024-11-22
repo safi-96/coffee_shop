@@ -1,8 +1,13 @@
 #!/bin/bash -e
 
-# If running the rails server then create or migrate existing database
-if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
-  ./bin/rails db:prepare
+# Remove any existing server PID file to prevent conflicts
+rm -f tmp/pids/server.pid
+
+# If the first argument is the Rails server, prepare the database
+if [ "$1" == "bin/rails" ] && [ "$2" == "server" ]; then
+  echo "Running database preparation..."
+  bin/rails db:prepare
 fi
 
-exec "${@}"
+# Execute the container's main command
+exec "$@"
