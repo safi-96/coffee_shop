@@ -39,13 +39,6 @@ The timeline for the submission of your full solution is within 48 hours of the 
 
 To Dos:
 
-- Unit Test with Rspecs
 - Docker and Docker Compose
 - Postman collection and API documentation and add new request for the doc of each endpoint
 - Update Readme with instructions to run the application, and should be easy to go
-
-### Endpoints
-
-- Availalbe Item Listing
-- Create Order
-- Get notification after fixed amount of time when the order is ready
