@@ -45,3 +45,16 @@
 - Customer can view his list of orders
 - Customer can view his last order for payment purposes
 - Customer will be notified over email once he/she pays for the order after 5 minutes
+
+## Postman Collection
+
+To test the API endpoints, you can use the provided Postman collection.
+
+- [Download the Postman Collection](./docs/my-collection.json)
+
+### Importing the Collection in Postman
+
+1. Download the `.json` file from the link above.
+2. Open Postman and go to **File > Import**.
+3. Select the downloaded `.json` file.
+4. The collection will appear in your Postman workspace.
