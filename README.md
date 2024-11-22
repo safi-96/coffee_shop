@@ -22,17 +22,6 @@
 
 ## Project Setup
 
-### With Docker-Compose
-
-- `git clone https://github.com/safi-96/coffee_shop.git`
-- `cd coffee_shop/`
-- `docker-compose build`
-- `docker-compose up`
-- Run Unit Test cases with rspecs
-- `bundle exec rspec`
-
-### Without Docker-Compose
-
 - `git clone https://github.com/safi-96/coffee_shop.git`
 - `cd coffee_shop/`
 - `bundle install`
